@@ -31,7 +31,7 @@ class Snow {
             this.snow.style.left = `${this.x + this.delX}px`
             this.y += this.delY;
             this.x += this.delX;
-            if(this.x > window.innerWidth || this.x < 0 - this.width) {
+            if(this.x > window.innerWidth - this.width || this.x < 0 - this.width) {
                 clearInterval(animation)
                 this.snow.remove();
             };
@@ -52,12 +52,11 @@ function r(max, min = 0) {
 }
 
 function rMinus(){
-    return r(9) > 7 ? 1 : -1;
+    return r(9) > 6 ? 1 : -1;
 }
 
 setInterval(()=>{
-    console.log(rMinus())
     let snow = new Snow(14,14,r(window.innerWidth),-20, rMinus() * r(5,3), r(5));
     snow.create();
-    snow.move(10);
+    snow.move(15);
 }, 60);
